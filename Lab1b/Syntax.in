@@ -1,0 +1,21 @@
+Syntax:
+The words: predefined tokens are specified between " and ".
+
+-program = decllist stmtlist
+-comment = ":)"
+-decllist = {declaration "."}
+-declaration = type identifier
+-type1 = "integer" | "boolean" | "real" | "string" | "character"
+-arraydecl = "array" "[" number "]" "of" type1
+-type = type1 | arraydecl
+-relation = "<" | ">" | "==" | "<=" | ">=" | "!="
+-stmtlist = stmt | stmt "." stmtlist
+-stmt = assignstmt | iostmt
+-assignstmt = identifier "=" expression
+-expression = expression "+" term | expression "-" term | term
+-term = term "*" factor | term "/" factor | factor
+-factor = "(" expression ")" | identifier
+-iostmt = "read" identifier | "print" identifier
+-ifstmt = "if" condition "then" "(" stmtlist ")" ["else" "(" stmtlist ")"]
+-whilestmt = "while" condition "execute" "(" stmtlist ")"
+-condition = expression relation expression

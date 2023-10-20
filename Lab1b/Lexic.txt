@@ -1,0 +1,21 @@
+Alphabet:
+a. Upper (A-Z) and lower (a-z) case letters of the English alphabet;
+b. Decimal digits (0-9);
+c. Underline character '_'.
+
+Lexic:
+a. Special symbols:
+-operators: + - * / < > <= >= != = and
+-separators: ( ) . space :
+-reserved words: integer real boolean string array character if else then for mod print break while execute read of
+b. Identifiers: a sequence of letters and  digits, such that the first character is a letter; the rule is:
+-identifier = letter {letter | digit | "_"}
+-letter = "a" | "b" | ... | "z" | "A" | "B" | ... | "Z"
+-digit = "0" | "1" | "2" | ... | "9"
+c. Constants:
+-nonzero_digit = "1" | "2" | "3" | ... | "9"
+-number = "0" | nonzero_digit {"0" | nonzero_digit}
+-integer = ["-" | "+"] number | number
+-boolean = "0" | "1"
+-character = letter | digit
+-string = character {string}
