@@ -1,0 +1,16 @@
+:) gcd of two numbers
+
+integer a.
+integer b.
+integer r.
+
+read a.
+read b.
+
+while b != 0 execute (
+    r = b.
+    b = a mod b.
+    a = r.
+)
+
+print a.

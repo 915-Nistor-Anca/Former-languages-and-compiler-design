@@ -1,0 +1,19 @@
+:) the minimum of 3 numbers
+
+integer a.
+integer b.
+integer c.
+
+if a > b then (
+    if a > c then (
+        ret a.
+    )
+)
+
+if b > a then (
+    if b > c then (
+        ret b.
+    )
+)
+
+ret c.

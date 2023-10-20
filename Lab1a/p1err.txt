@@ -1,0 +1,19 @@
+:) the minimum of 3 numbers
+
+integer a.
+integer b.
+integer c.
+
+if a > b then (
+    if a > c then (
+        print a.
+    )
+)
+
+else if b > a then (
+    if b > c then (
+        print b.
+    )
+)
+
+else 1print c.
