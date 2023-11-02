@@ -5,7 +5,7 @@ c. Underline character '_'.
 
 Lexic:
 a. Special symbols:
--operators: + - * / < > <= >= != = and
+-operators: + - * / < > <= >= != = == and or
 -separators: ( ) . space :
 -reserved words: integer real boolean string array character if else then for mod print break while execute read of
 b. Identifiers: a sequence of letters and  digits, such that the first character is a letter; the rule is:
