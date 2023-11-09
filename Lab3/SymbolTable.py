@@ -15,7 +15,7 @@ class SymbolTable:
         return self.hashTable
 
     def __str__(self):
-        s = ""
+        s = "Symbol Table\n"
         i = 0
         for row in self.hashTable.table:
             s += "Row " + str(i) + ": "

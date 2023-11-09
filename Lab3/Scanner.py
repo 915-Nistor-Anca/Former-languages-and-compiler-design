@@ -127,8 +127,16 @@ class Scanner:
 
         i = 0
         while i < len(tokens) - 1:
+            j = i + 1
+            if tokens[i] == '-' and tokens[j].isnumeric():
+                tokens[i] = tokens[i] + tokens[j]
+                del tokens[j]
+            i += 1
+
+        i = 0
+        while i < len(tokens) - 1:
             if tokens[i].startswith('"'):
-                #print(tokens[i], "starts with ghilimele")
+                #print(tokens[i], "starts with ")
                 j = i + 1
                 while j < len(tokens) and not tokens[j].endswith('"'):
                     j += 1
@@ -153,16 +161,23 @@ class Scanner:
 
 
     def scanning(self):
+        ok = 1
         tokens = self.detectTokens()
         for token in tokens:
             if self.isReservedWord(token) or self.isOperator(token) or self.isSeparator(token) or token == ":)":
-                self.program_internal_form.addTokenSTPos(token, (-1,-1))
+                self.program_internal_form.addTokenSTPos(token, (-1, -1))
             elif self.isIdentifier(token) or self.isConstant(token):
                 self.symbol_table.add(token)
                 pos = self.symbol_table.getPosition(token)
-                self.program_internal_form.addTokenSTPos(token, pos)
+                if self.isIdentifier(token):
+                    self.program_internal_form.addTokenSTPos("id", pos)
+                elif self.isConstant(token):
+                    self.program_internal_form.addTokenSTPos("const", pos)
             else:
-                print("Lexical error!", token)
+                print("Lexical error: ", token)
+                ok = 0
+        if ok == 1:
+            print("Lexically correct.")
 
     def getSymbolTable(self):
         return self.symbol_table
