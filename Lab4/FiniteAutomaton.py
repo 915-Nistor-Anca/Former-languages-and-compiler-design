@@ -66,6 +66,9 @@ class FiniteAutomaton:
                     print("The next step will be ", current_step, ',')
             if ok == 0:
                 return f"The sequence {sequence} is not accepted by the FA.\n"
-        return f"The sequence {sequence} is accepted by FA.\n"
+        if current_step in self.final_states:
+            return f"The sequence {sequence} is accepted by FA.\n"
+        else:
+            return f"The sequence {sequence} is not accepted by the FA.\n"
 
 
