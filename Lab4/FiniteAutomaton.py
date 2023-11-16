@@ -72,3 +72,16 @@ class FiniteAutomaton:
             return f"The sequence {sequence} is not accepted by the FA.\n"
 
 
+    def checkIfDFA(self):
+        transitions = self.breakTransitions()
+        for state in self.set_of_states:
+            for symbol in self.alphabet:
+                k = 0
+                for t in transitions:
+                    if t[0] == state and t[1] == symbol:
+                        k += 1
+                if k > 1:
+                    return 0
+        return 1
+
+
