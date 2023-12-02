@@ -54,6 +54,7 @@ class FiniteAutomaton:
 
     def checkSequence(self, sequence):
         transitions = self.breakTransitions()
+        print(transitions)
         current_step = self.initial_state
         for symbol in sequence:
             print("The symbol is ", symbol, '.')

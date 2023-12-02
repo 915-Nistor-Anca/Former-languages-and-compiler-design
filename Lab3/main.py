@@ -12,7 +12,7 @@ if __name__ == '__main__':
     reserved_words = ["integer", "real", "boolean", "string", "array", "character", "if", "else", "then", "for", "mod",
                       "print", "break", "while", "execute", "read", "of", "ret"]
 
-    s = Scanner(operators, separators, reserved_words, "p1.txt")
+    s = Scanner(operators, separators, reserved_words, "p1err.txt")
     s.scanning()
     #print(s.detectTokens())
     pif = s.getProgramInternalForm()
