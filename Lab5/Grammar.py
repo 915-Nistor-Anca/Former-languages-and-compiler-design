@@ -48,7 +48,7 @@ class Grammar:
         found_start_symbol = False
         for p in self.production_rules:
             broken_p = self.breakProductionRule(p)
-            print(broken_p[0])
+            #print(broken_p[0])
             if broken_p[0] == self.start_symbol:
                 found_start_symbol = True
             if broken_p[0] not in self.non_terminals:

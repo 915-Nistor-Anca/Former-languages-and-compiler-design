@@ -1,0 +1,41 @@
+Non-terminals: program,decllist,stmtlist,declaration,type,identifier,type1,arraydecl,relation,stmt,assignstmt,expression,term,factor,iostmt,ifstmt,whilestmt,condition
+Terminals: <,>,==,<=,>=,!=,.,of,[,],=,*,/,+,-,(,),if,then,execute,while,else,read,print,integer,boolean,real,string,array,character,number,const
+Start symbol: program
+Production rules:
+program -> decllist stmtlist
+decllist -> declaration . decllist
+declaration -> type identifier
+type1 -> integer
+type1 -> boolean
+type1 -> real
+type1 -> string
+type1 -> character
+arraydecl -> array [ number ] of type1
+type -> type1
+type -> arraydecl
+relation -> <
+relation -> >
+relation -> ==
+relation -> <=
+relation -> >=
+relation -> !=
+stmtlist -> stmt
+stmtlist -> stmt . stmtlist
+stmt -> assignstmt
+stmt -> iostmt
+assignstmt -> identifier = expression
+expression -> expression + term
+expression -> expression - term
+expression -> term
+term -> term * factor
+term -> term / factor
+term -> factor
+factor -> ( expression )
+factor -> identifier
+factor -> const
+iostmt -> read identifier
+iostmt -> print identifier
+ifstmt -> if condition then ( stmtlist )
+ifstmt -> if condition then ( stmtlist ) else ( stmtlist )
+whilestmt -> while condition execute ( stmtlist )
+condition -> expression relation expression
