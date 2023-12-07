@@ -54,7 +54,7 @@ class Grammar:
             if broken_p[0] not in self.non_terminals:
                 return f"{broken_p[0]} is not a non-terminal, so the grammar is not a CFG."
             for terminal in broken_p[1]:
-                if (terminal not in self.non_terminals) and (terminal not in self.terminals):
+                if (terminal not in self.non_terminals) and (terminal not in self.terminals and terminal != "epsilon"):
                     return f"{terminal} is not in the list of terminals / non-terminals, so the grammar is not a CFG."
         if found_start_symbol is False:
             return "There is no start symbol, so the grammar is not a CFG."

@@ -4,6 +4,7 @@ Start symbol: program
 Production rules:
 program -> decllist stmtlist
 decllist -> declaration . decllist
+decllist -> epsilon
 declaration -> type identifier
 type1 -> integer
 type1 -> boolean
@@ -20,6 +21,7 @@ relation -> >=
 relation -> !=
 stmtlist -> stmt
 stmtlist -> stmt . stmtlist
+stmtlist -> epsilon
 stmt -> assignstmt
 stmt -> iostmt
 assignstmt -> identifier = expression
