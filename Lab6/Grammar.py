@@ -60,6 +60,15 @@ class Grammar:
             return "There is no start symbol, so the grammar is not a CFG."
         return "The grammar is a CFG.\n\n"
 
+#Rules to compute FIRST set:
+
+#1.If x is a terminal, then FIRST(x) = { ‘x’ }
+#2.If x-> Є, is a production rule, then add Є to FIRST(x).
+#3.If X->Y1 Y2 Y3….Yn is a production,
+#   3.1.FIRST(X) = FIRST(Y1)
+#   3.2.If FIRST(Y1) contains Є then FIRST(X) = { FIRST(Y1) – Є } U { FIRST(Y2) }
+#   3.3.If FIRST (Yi) contains Є for all i = 1 to n, then add Є to FIRST(X).
+
     def FIRST(self, symbol):
         first_set = set()
 
@@ -92,22 +101,31 @@ class Grammar:
             response += f"FIRST({non_terminal}) = {self.FIRST(non_terminal)}\n"
         return response
 
+    # Rules to compute FOLLOW set:
+
+    # 1) FOLLOW(S) = { $ }
+    # 2) If A -> pBq is a production, where p, B and q are any grammar symbols,
+    #    then everything in FIRST(q)  except Є is in FOLLOW(B).
+    # 3) If A->pB is a production, then everything in FOLLOW(A) is in FOLLOW(B).
+    # 4) If A->pBq is a production and FIRST(q) contains Є,
+    #    then FOLLOW(B) contains { FIRST(q) – Є } U FOLLOW(A)
+
     def FOLLOW(self, symbol):
         follow_set = set()
 
-        if symbol == self.start_symbol:  # If it's the start symbol, add '$'
+        if symbol == self.start_symbol:
             follow_set.add("$")
 
         for p in self.production_rules:
             broken_p = self.breakProductionRule(p)
             if symbol in broken_p[1]:
-                idx = broken_p[1].index(symbol)  # Find the index of the symbol in the production
+                idx = broken_p[1].index(symbol)
                 for s in broken_p[1][idx + 1:]:
                     first_s = self.FIRST(s)
-                    follow_set |= (first_s - {"epsilon"})  # Add everything in FIRST(s) except epsilon to FOLLOW(symbol)
-                    if "epsilon" not in first_s:  # If epsilon is not in FIRST(s), stop and break
+                    follow_set |= (first_s - {"epsilon"})
+                    if "epsilon" not in first_s:
                         break
-                else:  # If all symbols derived epsilon, add FOLLOW(A) to FOLLOW(B)
+                else:
                     if broken_p[0] != symbol:
                         follow_set |= self.FOLLOW(broken_p[0])
 
