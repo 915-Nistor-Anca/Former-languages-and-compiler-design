@@ -1,5 +1,5 @@
-Non-terminals: E,E',T,T',F
-Terminals: id,+,*,(,),epsilon
+Non-terminals: E,T,F,E',T'
+Terminals: +,*,(,),id,epsilon
 Start symbol: E
 Production rules:
 E -> T E'
