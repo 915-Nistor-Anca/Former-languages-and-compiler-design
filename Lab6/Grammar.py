@@ -1,3 +1,6 @@
+from tabulate import tabulate
+
+
 class Grammar:
     def __init__(self, file_name):
         self.non_terminals = []
@@ -136,3 +139,75 @@ class Grammar:
         for non_terminal in self.non_terminals:
             response += f"FOLLOW({non_terminal}) = {self.FOLLOW(non_terminal)}\n"
         return response
+
+
+
+
+    def productionIsNull(self, production):
+        p = self.breakProductionRule(production)
+        return (p[1] == ["epsilon"])
+
+
+    def getProductionRulesForNonTerminal(self, non_terminal):
+        productions = []
+        for production in self.production_rules:
+            p = self.breakProductionRule(production)
+            if (p[0] == non_terminal):
+                productions.append(production)
+        return productions
+
+
+    def findRightChoice(self, terminal, non_terminal):
+        first_set = self.FIRST(non_terminal)
+        follow_set = self.FOLLOW(non_terminal)
+        productions = self.getProductionRulesForNonTerminal(non_terminal)
+
+        if terminal in first_set:
+            for p in productions:
+                p_b = self.breakProductionRule(p)
+                if terminal in p_b[1]:
+                    return p
+            return p
+
+        if terminal in follow_set:
+            for p in productions:
+                if self.productionIsNull(p):
+                    return p
+
+        return ""
+
+
+    def constructParsingTable(self):
+        parsing_table = []
+
+        first_row = [" "]
+        for terminal in self.terminals:
+            if terminal == "epsilon":
+                first_row.append("$")
+            else:
+                first_row.append(terminal)
+
+        for non_terminal in self.non_terminals:
+            row = [non_terminal]
+            for terminal in self.terminals:
+                if terminal == "epsilon":
+                    row.append(self.findRightChoice("$", non_terminal))
+                else:
+                    row.append(self.findRightChoice(terminal, non_terminal))
+            parsing_table.append(row)
+
+        for terminal in self.terminals:
+            row = [terminal if terminal != "epsilon" else "$"]
+            for terminal2 in self.terminals:
+                if terminal == terminal2 and terminal != "epsilon":
+                    row.append("pop")
+                elif terminal == "epsilon" and terminal2 == "epsilon":
+                    row.append("accept")
+                else:
+                    row.append("")
+            parsing_table.append(row)
+        return parsing_table
+
+
+
+
