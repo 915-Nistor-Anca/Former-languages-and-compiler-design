@@ -5,20 +5,22 @@ class ParserOutput:
     def getAction(self, row, column):
         rows = self.grammar.non_terminals + self.grammar.terminals + ["$"]
         rows.remove("epsilon")
+
         columns = self.grammar.terminals + ["$"]
         columns.remove("epsilon")
         parsing_table = self.grammar.constructParsingTable()
 
         i = rows.index(row)
+        #print(row, column)
         j = columns.index(column) + 1
-        result =  parsing_table[i][j]
+        result = parsing_table[i][j]
         return result
 
     def parse(self, input):
         input_stack = input.split(' ')
         input_stack.append('$')
         work_stack = [self.grammar.start_symbol, '$']
-        derivations = []
+        #derivations = []
         actions = []
         # print(input_stack, work_stack)
         while True:
@@ -32,7 +34,7 @@ class ParserOutput:
             elif action == "pop":
                 work_stack.pop(0)
                 input_stack.pop(0)
-                derivations.append(" ".join(work_stack))
+                #derivations.append(" ".join(work_stack))
             else:
                 actions.append(action)
                 print(action)
@@ -42,8 +44,7 @@ class ParserOutput:
                 right_hand_side = broken_action[1]
                 if right_hand_side != ["epsilon"]:
                     work_stack = right_hand_side + work_stack
-                    derivations.append(" ".join(work_stack))
-        self.createTable(actions)
+                    #derivations.append(" ".join(work_stack))
         return actions
 
 
@@ -71,16 +72,14 @@ class ParserOutput:
             for symbol in right_hand_side:
                 if symbol != "epsilon":
                     if symbol != right_hand_side[-1]:
-                        symbol_list.append((id, symbol, parent, id+1))
+                        symbol_list.append((id, symbol, parent, id + 1))
                     else:
                         symbol_list.append((id, symbol,parent, -1))
                     for p in parents_ids:
                         if p[0] == symbol:
                             p[1] = id
                     id += 1
-
-        for symbol in symbol_list:
-            print(symbol)
+        return symbol_list
 
 
 

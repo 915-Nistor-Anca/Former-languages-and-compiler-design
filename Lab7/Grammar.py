@@ -80,18 +80,24 @@ class Grammar:
             return first_set
 
         for p in self.production_rules:
+            #print("production rule: ",p)
             broken_p = self.breakProductionRule(p)
             if broken_p[0] == symbol:
                 epsilon_found = True
+                i = 0
                 for s in broken_p[1]:
-                    if s == "epsilon":
-                        epsilon_found = True
+                    if s == broken_p[0] and i == 0:
+                        pass
                     else:
-                        s_first_set = self.FIRST(s)
-                        first_set |= s_first_set
-                        if 'epsilon' not in s_first_set:
-                            epsilon_found = False
-                            break
+                        if s == "epsilon":
+                            epsilon_found = True
+                        else:
+                            s_first_set = self.FIRST(s)
+                            first_set |= s_first_set
+                            if 'epsilon' not in s_first_set:
+                                epsilon_found = False
+                                break
+                    i += 1
 
                 if epsilon_found:
                     first_set.add("epsilon")
@@ -101,6 +107,7 @@ class Grammar:
     def firstSets(self):
         response = "Using the LL(1) parser, the first sets are:\n"
         for non_terminal in self.non_terminals:
+            print(non_terminal)
             response += f"FIRST({non_terminal}) = {self.FIRST(non_terminal)}\n"
         return response
 

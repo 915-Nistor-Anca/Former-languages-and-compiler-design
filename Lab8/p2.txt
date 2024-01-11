@@ -1,0 +1,19 @@
+integer a.
+integer d.
+boolean ok.
+p = -34.
+ok = 1.
+
+read a.
+
+for: d == 2, d <= a/2, d = d + 1 (
+    if a mod d == 0 then (
+        print (a is not prime).
+        ok = 0.
+        break.
+    )
+)
+
+if ok == 1 then (
+    print (a is prime).
+)
