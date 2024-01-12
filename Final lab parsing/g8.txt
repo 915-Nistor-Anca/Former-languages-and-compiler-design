@@ -1,9 +1,0 @@
-Non-terminals: S,A,B
-Terminals: a,b,c,d,epsilon
-Start symbol: S
-Production rules:
-S -> A B
-A -> c
-A -> a A
-B -> d
-B -> b B
