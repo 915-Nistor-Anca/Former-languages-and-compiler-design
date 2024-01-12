@@ -5,7 +5,6 @@
 %}
 
 %option noyywrap
-%option caseless
 
 letter [a-zA-Z]
 digit [0-9]
