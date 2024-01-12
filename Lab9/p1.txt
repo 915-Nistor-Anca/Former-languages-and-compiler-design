@@ -1,4 +1,4 @@
-integer a.
+integer a .
 integer b.
 integer c.
 

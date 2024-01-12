@@ -3,6 +3,10 @@
 #include <stdlib.h>
 %}
 
+%{
+void yyerror(const char*);
+%}
+
 %token PLUS;
 %token MINUS;
 %token TIMES;
@@ -71,14 +75,14 @@ type1 : INTEGER   { printf("Type1 -> integer\n"); }
 arraydecl : ARRAY LEFTROUNDBRAKET NUMBER RIGHTROUNDBRAKET OF type1 { printf("ArrayDecl -> array [ Number ] of Type1\n"); }
           ;
 
-relation : SMALLER      { printf("RelationOp -> <\n"); }
-            | BIGGER       { printf("RelationOp -> >\n"); }
-            | SMALLEREQUAL  { printf("RelationOp -> <=\n"); }
-            | BIGGEREQUAL   { printf("RelationOp -> >=\n"); }
-            | DIFFERENT     { printf("RelationOp -> !=\n"); }
-            | EQUAL         { printf("RelationOp -> ==\n"); }
-            | AND           { printf("RelationOp -> and\n"); }
-            | OR            { printf("RelationOp -> or\n"); }
+relation : SMALLER      { printf("Relation -> <\n"); }
+            | BIGGER       { printf("Relation -> >\n"); }
+            | SMALLEREQUAL  { printf("Relation -> <=\n"); }
+            | BIGGEREQUAL   { printf("Relation -> >=\n"); }
+            | DIFFERENT     { printf("Relation -> !=\n"); }
+            | EQUAL         { printf("Relation -> ==\n"); }
+            | AND           { printf("Relation -> and\n"); }
+            | OR            { printf("Relation -> or\n"); }
             ;
 
 stmtlist : stmt { printf("StmtList -> Stmt\n"); }
@@ -125,7 +129,9 @@ condition : expression relation expression { printf("Condition -> Expression Rel
 
 %%
 
-
+void yyerror(const char* s) {
+    fprintf(stderr, "Error: %s\n", s);
+}
 extern FILE *yyin;
 
 int main(int argc, char** argv) {

@@ -13,6 +13,7 @@ nonzero_digit [1-9]
 identifier {letter}({letter}|{digit}|_)*
 number [+-]?{nonzero_digit}{digit}*|0
 
+
 %%
 
 "+"     { printf("%s is an operator.\n", yytext); return PLUS; }
@@ -32,7 +33,6 @@ number [+-]?{nonzero_digit}{digit}*|0
 "("     { printf("%s is a separator.\n", yytext); return LEFTROUNDBRAKET; }
 ")"     { printf("%s is a separator.\n", yytext); return RIGHTROUNDBRAKET; }
 "."     { printf("%s is a separator.\n", yytext); return POINT; }
-" "     {}
 ":"     { printf("%s is a separator.\n", yytext); return TWOPOINTS; }
 ","     { printf("%s is a separator.\n", yytext); return COMMA; }
 

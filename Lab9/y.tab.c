@@ -73,9 +73,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/* Line 189 of yacc.c  */
+#line 6 "parser.y"
+
+void yyerror(const char*);
+
 
 /* Line 189 of yacc.c  */
-#line 79 "y.tab.c"
+#line 84 "y.tab.c"
 
 /* Enabling traces.  */
 #ifndef YYDEBUG
@@ -195,7 +200,7 @@ typedef int YYSTYPE;
 
 
 /* Line 264 of yacc.c  */
-#line 199 "y.tab.c"
+#line 204 "y.tab.c"
 
 #ifdef short
 # undef short
@@ -497,11 +502,11 @@ static const yytype_int8 yyrhs[] =
 /* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,    51,    51,    54,    57,    60,    61,    64,    65,    66,
-      67,    68,    71,    74,    75,    76,    77,    78,    79,    80,
-      81,    84,    85,    88,    89,    90,    91,    94,    97,    98,
-      99,   102,   103,   104,   107,   108,   109,   112,   113,   116,
-     117,   120,   123
+       0,    55,    55,    58,    61,    64,    65,    68,    69,    70,
+      71,    72,    75,    78,    79,    80,    81,    82,    83,    84,
+      85,    88,    89,    92,    93,    94,    95,    98,   101,   102,
+     103,   106,   107,   108,   111,   112,   113,   116,   117,   120,
+     121,   124,   127
 };
 #endif
 
@@ -1452,294 +1457,294 @@ yyreduce:
         case 2:
 
 /* Line 1455 of yacc.c  */
-#line 51 "parser.y"
+#line 55 "parser.y"
     { printf("Program -> DeclList StmtList\n"); }
     break;
 
   case 3:
 
 /* Line 1455 of yacc.c  */
-#line 54 "parser.y"
+#line 58 "parser.y"
     { printf("DeclList -> () Declaration . )\n"); }
     break;
 
   case 4:
 
 /* Line 1455 of yacc.c  */
-#line 57 "parser.y"
+#line 61 "parser.y"
     { printf("Declaration -> Type Identifier\n"); }
     break;
 
   case 5:
 
 /* Line 1455 of yacc.c  */
-#line 60 "parser.y"
+#line 64 "parser.y"
     { printf("Type -> Type1\n"); }
     break;
 
   case 6:
 
 /* Line 1455 of yacc.c  */
-#line 61 "parser.y"
+#line 65 "parser.y"
     { printf("Type -> ArrayDecl\n"); }
     break;
 
   case 7:
 
 /* Line 1455 of yacc.c  */
-#line 64 "parser.y"
+#line 68 "parser.y"
     { printf("Type1 -> integer\n"); }
     break;
 
   case 8:
 
 /* Line 1455 of yacc.c  */
-#line 65 "parser.y"
+#line 69 "parser.y"
     { printf("Type1 -> boolean\n"); }
     break;
 
   case 9:
 
 /* Line 1455 of yacc.c  */
-#line 66 "parser.y"
+#line 70 "parser.y"
     { printf("Type1 -> real\n"); }
     break;
 
   case 10:
 
 /* Line 1455 of yacc.c  */
-#line 67 "parser.y"
+#line 71 "parser.y"
     { printf("Type1 -> string\n"); }
     break;
 
   case 11:
 
 /* Line 1455 of yacc.c  */
-#line 68 "parser.y"
+#line 72 "parser.y"
     { printf("Type1 -> character\n"); }
     break;
 
   case 12:
 
 /* Line 1455 of yacc.c  */
-#line 71 "parser.y"
+#line 75 "parser.y"
     { printf("ArrayDecl -> array [ Number ] of Type1\n"); }
     break;
 
   case 13:
 
 /* Line 1455 of yacc.c  */
-#line 74 "parser.y"
-    { printf("RelationOp -> <\n"); }
+#line 78 "parser.y"
+    { printf("Relation -> <\n"); }
     break;
 
   case 14:
 
 /* Line 1455 of yacc.c  */
-#line 75 "parser.y"
-    { printf("RelationOp -> >\n"); }
+#line 79 "parser.y"
+    { printf("Relation -> >\n"); }
     break;
 
   case 15:
 
 /* Line 1455 of yacc.c  */
-#line 76 "parser.y"
-    { printf("RelationOp -> <=\n"); }
+#line 80 "parser.y"
+    { printf("Relation -> <=\n"); }
     break;
 
   case 16:
 
 /* Line 1455 of yacc.c  */
-#line 77 "parser.y"
-    { printf("RelationOp -> >=\n"); }
+#line 81 "parser.y"
+    { printf("Relation -> >=\n"); }
     break;
 
   case 17:
 
 /* Line 1455 of yacc.c  */
-#line 78 "parser.y"
-    { printf("RelationOp -> !=\n"); }
+#line 82 "parser.y"
+    { printf("Relation -> !=\n"); }
     break;
 
   case 18:
 
 /* Line 1455 of yacc.c  */
-#line 79 "parser.y"
-    { printf("RelationOp -> ==\n"); }
+#line 83 "parser.y"
+    { printf("Relation -> ==\n"); }
     break;
 
   case 19:
 
 /* Line 1455 of yacc.c  */
-#line 80 "parser.y"
-    { printf("RelationOp -> and\n"); }
+#line 84 "parser.y"
+    { printf("Relation -> and\n"); }
     break;
 
   case 20:
 
 /* Line 1455 of yacc.c  */
-#line 81 "parser.y"
-    { printf("RelationOp -> or\n"); }
+#line 85 "parser.y"
+    { printf("Relation -> or\n"); }
     break;
 
   case 21:
 
 /* Line 1455 of yacc.c  */
-#line 84 "parser.y"
+#line 88 "parser.y"
     { printf("StmtList -> Stmt\n"); }
     break;
 
   case 22:
 
 /* Line 1455 of yacc.c  */
-#line 85 "parser.y"
+#line 89 "parser.y"
     { printf("StmtList -> Stmt . StmtList\n"); }
     break;
 
   case 23:
 
 /* Line 1455 of yacc.c  */
-#line 88 "parser.y"
+#line 92 "parser.y"
     { printf("Stmt -> AssignStmt\n"); }
     break;
 
   case 24:
 
 /* Line 1455 of yacc.c  */
-#line 89 "parser.y"
+#line 93 "parser.y"
     { printf("Stmt -> IOStmt\n"); }
     break;
 
   case 25:
 
 /* Line 1455 of yacc.c  */
-#line 90 "parser.y"
+#line 94 "parser.y"
     { printf("Stmt -> IfStmt\n"); }
     break;
 
   case 26:
 
 /* Line 1455 of yacc.c  */
-#line 91 "parser.y"
+#line 95 "parser.y"
     { printf("Stmt -> WhileStmt\n"); }
     break;
 
   case 27:
 
 /* Line 1455 of yacc.c  */
-#line 94 "parser.y"
+#line 98 "parser.y"
     { printf("AssignStmt -> Identifier = Expression\n"); }
     break;
 
   case 28:
 
 /* Line 1455 of yacc.c  */
-#line 97 "parser.y"
+#line 101 "parser.y"
     { printf("Expression -> Expression + Term\n"); }
     break;
 
   case 29:
 
 /* Line 1455 of yacc.c  */
-#line 98 "parser.y"
+#line 102 "parser.y"
     { printf("Expression -> Expression - Term\n"); }
     break;
 
   case 30:
 
 /* Line 1455 of yacc.c  */
-#line 99 "parser.y"
+#line 103 "parser.y"
     { printf("Expression -> Term\n"); }
     break;
 
   case 31:
 
 /* Line 1455 of yacc.c  */
-#line 102 "parser.y"
+#line 106 "parser.y"
     { printf("Term -> Term * Factor\n"); }
     break;
 
   case 32:
 
 /* Line 1455 of yacc.c  */
-#line 103 "parser.y"
+#line 107 "parser.y"
     { printf("Term -> Term / Factor\n"); }
     break;
 
   case 33:
 
 /* Line 1455 of yacc.c  */
-#line 104 "parser.y"
+#line 108 "parser.y"
     { printf("Term -> Factor\n"); }
     break;
 
   case 34:
 
 /* Line 1455 of yacc.c  */
-#line 107 "parser.y"
+#line 111 "parser.y"
     { printf("Factor -> ( Expression )\n"); }
     break;
 
   case 35:
 
 /* Line 1455 of yacc.c  */
-#line 108 "parser.y"
+#line 112 "parser.y"
     { printf("Factor -> Identifier\n"); }
     break;
 
   case 36:
 
 /* Line 1455 of yacc.c  */
-#line 109 "parser.y"
+#line 113 "parser.y"
     { printf("Factor -> Number\n"); }
     break;
 
   case 37:
 
 /* Line 1455 of yacc.c  */
-#line 112 "parser.y"
+#line 116 "parser.y"
     { printf("IOStmt -> read Identifier\n"); }
     break;
 
   case 38:
 
 /* Line 1455 of yacc.c  */
-#line 113 "parser.y"
+#line 117 "parser.y"
     { printf("IOStmt -> print Identifier\n"); }
     break;
 
   case 39:
 
 /* Line 1455 of yacc.c  */
-#line 116 "parser.y"
+#line 120 "parser.y"
     { printf("IfStmt -> if Condition then ( StmtList )\n"); }
     break;
 
   case 40:
 
 /* Line 1455 of yacc.c  */
-#line 117 "parser.y"
+#line 121 "parser.y"
     { printf("IfStmt -> if Condition then ( StmtList ) else ( StmtList )\n"); }
     break;
 
   case 41:
 
 /* Line 1455 of yacc.c  */
-#line 120 "parser.y"
+#line 124 "parser.y"
     { printf("WhileStmt -> while Condition execute ( StmtList )\n"); }
     break;
 
   case 42:
 
 /* Line 1455 of yacc.c  */
-#line 123 "parser.y"
+#line 127 "parser.y"
     { printf("Condition -> Expression RelationOp Expression\n"); }
     break;
 
 
 
 /* Line 1455 of yacc.c  */
-#line 1743 "y.tab.c"
+#line 1748 "y.tab.c"
       default: break;
     }
   YY_SYMBOL_PRINT ("-> $$ =", yyr1[yyn], &yyval, &yyloc);
@@ -1951,10 +1956,12 @@ yyreturn:
 
 
 /* Line 1675 of yacc.c  */
-#line 126 "parser.y"
+#line 130 "parser.y"
 
 
-
+void yyerror(const char* s) {
+    fprintf(stderr, "Error: %s\n", s);
+}
 extern FILE *yyin;
 
 int main(int argc, char** argv) {
