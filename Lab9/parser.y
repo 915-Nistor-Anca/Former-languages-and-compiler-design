@@ -55,7 +55,7 @@ void yyerror(const char*);
 program : decllist stmtlist { printf("Program -> DeclList StmtList\n"); }
         ;
 
-decllist : LEFTROUNDBRAKET declaration POINT RIGHTROUNDBRAKET { printf("DeclList -> () Declaration . )\n"); }
+decllist : LEFTROUNDBRAKET declaration POINT RIGHTROUNDBRAKET { printf("DeclList -> ( Declaration . )\n"); }
         ;
 
 declaration : type IDENTIFIER { printf("Declaration -> Type Identifier\n"); }
